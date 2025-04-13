@@ -33,15 +33,14 @@ export default function SightingDetail(props) {
     };
 
     const getHyperlink = (mlClassResult) => {
-        switch (mlClassResult) {
-            case 'Scarus zelindae_IP':
-                return "https://budioes.org/Budiao-Banana/";
-            case 'Sparisoma axillare_IP':
-                return "https://budioes.org/budiao-cinza/";
-            case 'Scarus trispinosus_ADT':
-                return "https://budioes.org/budiao-azul/";
-            default:
-                return "#";
+        if (mlClassResult.includes('Scarus zelindae')) {
+            return "https://budioes.org/Budiao-Banana/";
+        } else if (mlClassResult.includes('Sparisoma axillare')) {
+            return "https://budioes.org/budiao-cinza/";
+        } else if (mlClassResult.includes('Scarus trispinosus')) {
+            return "https://budioes.org/budiao-azul/";
+        } else {
+            return "#";
         }
     };
 
@@ -71,11 +70,17 @@ export default function SightingDetail(props) {
                                     <tr key={row.id} className="text-center">
                                         <td className="border p-2">{row.id}</td>
                                         <td className="border p-2">{row.path} </td>
-                                        <td className="border p-2"><img
-                                            src={`${baseURL}${row.id}`}
-                                            alt="Imagem"
-                                            style={{ width: "100px", height: "100px", objectFit: "cover" }}
-                                        /></td>
+                                        <td className="border p-2">
+                                            {row.path && row.id ? (
+                                                <img
+                                                    src={`${baseURL}${row.id}`}
+                                                    alt="Imagem"
+                                                    style={{ width: "100px", height: "100px", objectFit: "cover" }}
+                                                />
+                                            ) : (
+                                                "Imagem excluída"
+                                            )}
+                                        </td>
                                         <td className="border p-2">{row.status}</td>
                                         <td className="border p-2"> <a
                                             href={getHyperlink(row.ml_class_result)}

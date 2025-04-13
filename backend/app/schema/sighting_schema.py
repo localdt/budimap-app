@@ -21,6 +21,7 @@ class FileCreate(FileBase):
     path: str
     status: str
     sighting_id: int
+    ml_class_result: Optional[str] = None
     
 class FileUpdate(BaseModel):
     status: str

@@ -66,7 +66,15 @@ export default function Upload(props) {
       .post("http://localhost:8000/sightings/upload", formData)
       .then((response) => {
         console.log(response);
-        toast.success(response.data.detail);
+        if (response.data.result == 0) {
+          toast.success(response.data.detail);
+        } else if (response.data.result == 1) {
+          toast.warning(response.data.detail);
+        } else {
+          toast.error(response.data.detail);
+        }
+          
+        
         setTimeout(() => {
           navigate("/sighting")
         }, 1000);
