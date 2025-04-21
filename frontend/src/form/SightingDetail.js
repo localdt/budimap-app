@@ -39,6 +39,10 @@ export default function SightingDetail(props) {
             return "https://budioes.org/budiao-cinza/";
         } else if (mlClassResult.includes('Scarus trispinosus')) {
             return "https://budioes.org/budiao-azul/";
+        } else if (mlClassResult.includes('Sparisoma amplum')) {
+            return "https://budioes.org/budiao-bandeira/";
+        } else if (mlClassResult.includes('Sparisoma frondosum')) {
+            return "https://budioes.org/budiao-sinaleiro/";
         } else {
             return "#";
         }
@@ -52,7 +56,6 @@ export default function SightingDetail(props) {
                         <h1 className="text-3xl font-bold text-center mb-4">
                             Detalhes do Avistamento: ID {id}
                         </h1>
-
                     </div>
                     <table className="min-w-full table-auto bg-white border-collapse border border-gray-200">
                         <thead>

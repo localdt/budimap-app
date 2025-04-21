@@ -27,7 +27,7 @@ import sys
 
 
 #alterado para identificar mais peixes
-CONFIDENCE = 0.6 
+CONFIDENCE = 0.55 
 SCORE_THRESHOLD = 0.5
 IOU_THRESHOLD = 0.5
 
@@ -49,7 +49,8 @@ net = cv2.dnn.readNetFromDarknet(config_path, weights_path)
 
 out_path = 'E:\\YOLO\\Saida_Exemplos\\'
 
-service_url = 'http://localhost:5000/classify_inception'
+service_url = 'http://localhost:5000/classify_resnet2'
+#service_url = 'http://localhost:5000/classify_inception'
 #service_url = 'http://localhost:5000/classify_vgg'
 
 router = APIRouter(prefix="/sightings", tags=['Sighting'])
